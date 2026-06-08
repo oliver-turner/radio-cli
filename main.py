@@ -1,7 +1,19 @@
-def function():
-    print("hello world")
-    return
+import json
 
+from pyradios import RadioBrowser
 
-if __name__ == "__main__":
-    function()
+rb = RadioBrowser()
+results = ""
+stations = ["bbc world service", "abc radio", "taiwan"]
+
+results = rb.search(hidebroken=True, countrycode="tw")
+
+if results:
+    print(json.dumps(results, indent=2))
+
+# for station in stations:
+#    results = rb.search(name=station)
+#
+#    if results:
+#        print(json.dumps(results, indent=2))
+#        print("\n")
