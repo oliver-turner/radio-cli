@@ -4,11 +4,11 @@ from pyradios import RadioBrowser
 
 rb = RadioBrowser()
 results = ""
-stations = ["fip", "Swiss Jazz", "somaFM groove", "Paradise main"]
 
-for station in stations:
-    results = rb.search(name=station, hidebroken=True, order="votes")
+results = rb.search(
+    tag="classical", hidebroken=True, order="votes", bitrate_min=64, countrycode="au"
+)
 
-    if results:
-        print(json.dumps(results, indent=2))
-        print("\n")
+if results:
+    print(json.dumps(results, indent=2))
+    print("\n")
