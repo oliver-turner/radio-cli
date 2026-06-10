@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, TypeAdapter
 
 # Define a object class Radio_Stations
 # Import the file data/stations-list-raw.json
@@ -17,7 +17,12 @@ class RadioStation(BaseModel):
 
 
 json_path = Path(__file__).parent / "data" / "stations-list-raw.json"
-
 stations_json = json_path.read_text()
 
-print(stations_json)
+stations_adapter = TypeAdapter(list[RadioStation])
+stations: list[RadioStation] = stations_adapter.validate_json(stations_json)
+
+for station in stations:
+    print(
+        f" id: {station.stationuuid}\n name: {station.name} \n url: {station.url_resolved} \n"
+    )
