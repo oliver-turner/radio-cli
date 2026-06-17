@@ -1,6 +1,6 @@
 import sys
 
-from src.menu import show_my_stations, show_welcome_menu
+from src.menu import play_station, show_my_stations, show_welcome_menu
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
         choice = input("\nType the index and press enter :) ").strip()
 
         if choice == "1":
-            print("\nDo this next")
+            play_station()
         elif choice == "2":
             show_my_stations()
         elif choice == "3":
