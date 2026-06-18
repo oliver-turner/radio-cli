@@ -25,7 +25,7 @@ def show_welcome_menu():
     print("\nMenu")
     print("1. Play")
     print("2. View Saved Stations")
-    print("3. Exit Program")
+    print("Enter q to exit")
 
 
 # List the stations, use a for loop through the my_stations, list by int.
@@ -33,6 +33,7 @@ def show_welcome_menu():
 # Use the choice to filter by stationuuid and use that to find the URL
 # Use mpv play URL
 def play_station():
+    url = None
     my_stations = parse_json()
     print()
     print(VISUAL_SEPARATOR)
@@ -41,14 +42,20 @@ def play_station():
     print(VISUAL_SEPARATOR)
 
     while True:
-        choice = input("Type the index and press enter ").strip()
+        choice = input("Type the index and press enter [or q for exit]: ").strip()
 
-        if choice.isdigit():
+        if choice == "q":
+            print("Exiting...")
+            break
+
+        elif choice.isdigit():
             choice_int = int(choice)
 
             if 1 <= choice_int <= len(my_stations):
-                selected_station = my_stations[choice_int - 1].name
-                print(selected_station)
+                selected_station = my_stations[choice_int - 1]
+                url = selected_station.url_resolved
+                name = selected_station.name
+                print(f"\nYou chose {name}\n{url}\n")
 
             else:
                 print("That is not a station, please try again ")
