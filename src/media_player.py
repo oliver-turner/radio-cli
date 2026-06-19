@@ -1,10 +1,5 @@
-# Class that connects to Windows Media Player
-# Follows the singleton design pattern
-# Create a Class Media_Player
-# Initialise object using constructor
-# Create connection to media player api
-# define functions for start, stop
 # Handle async play
+# Need to have name of station in windows + a system tray
 
 import asyncio
 
@@ -12,7 +7,6 @@ from winrt.windows.foundation import Uri
 from winrt.windows.media.playback import MediaPlayer
 
 mp = MediaPlayer()
-
 
 def play_stream(url_to_play):
     # Initialise media player
@@ -29,3 +23,11 @@ play_stream(
 )
 
 input("\nPress ENTER to close the player and exit script...\n")
+
+
+# Create Media_Player class
+# Follows the singleton design pattern
+# Initialise object using constructor
+# define functions for start, stop, tracking functions for getting states for loading and active.
+# Graceful exit functionality
+class Media_Player:
