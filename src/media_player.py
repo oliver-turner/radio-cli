@@ -11,8 +11,8 @@ class Media_Player:
         self.radio = MediaPlayer()
 
     def play_stream(self, url_to_play: str):
-
-        uri = Uri(url_to_play)
+        clean_url = str(url_to_play).strip()
+        uri = Uri(clean_url)
         self.radio.set_uri_source(uri)
         self.radio.play()
 

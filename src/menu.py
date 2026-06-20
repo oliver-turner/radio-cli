@@ -1,64 +1,22 @@
-# Create the terminal interactive menu from here
-
-from src.stations_json_parser import parse_json
-
 VISUAL_SEPARATOR = "=" * 100
 
 
-def show_my_stations():
-
-    my_stations = parse_json()
+def show_stations(user_list):
     print()
     print(VISUAL_SEPARATOR)
+    print()
     print("My Saved Stations:\n")
-    for station in my_stations:
+    for index, station in enumerate(user_list, start=1):
         print(
-            f"Name: {station.name}\nCountry: {station.country}\n"
-            f"Quality: {station.codec} ({station.bitrate}Kpbs)\n"
-            f"URL: {station.url_resolved}\n"
+            f"{index}: {station.name}\nCountry: {station.country}\n"
+            f"Quality: {station.codec} ({station.bitrate}Kpbs)\n",
         )
     print(VISUAL_SEPARATOR)
     return
 
 
-def show_welcome_menu():
+def show_welcome():
     print("\nMenu")
     print("1. Play")
     print("2. View Saved Stations")
     print("Enter q to exit")
-
-
-# List the stations, use a for loop through the my_stations, list by int.
-# Ask for the input, choice = the input
-# Use the choice to filter by stationuuid and use that to find the URL
-# Use mpv play URL
-def play_station():
-    url = None
-    my_stations = parse_json()
-    print()
-    print(VISUAL_SEPARATOR)
-    for index, station in enumerate(my_stations, start=1):
-        print(index, station.name)
-    print(VISUAL_SEPARATOR)
-
-    while True:
-        choice = input("Type the index and press enter [or q for exit]: ").strip()
-
-        if choice == "q":
-            print("Exiting...")
-            break
-
-        elif choice.isdigit():
-            choice_int = int(choice)
-
-            if 1 <= choice_int <= len(my_stations):
-                selected_station = my_stations[choice_int - 1]
-                url = selected_station.url_resolved
-                name = selected_station.name
-                print(f"\nYou chose {name}\n{url}\n")
-
-            else:
-                print("That is not a station, please try again ")
-
-        else:
-            print("Please choose a valid number")
