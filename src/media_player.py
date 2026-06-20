@@ -1,13 +1,8 @@
-import asyncio
-
 from winrt.windows.foundation import Uri
 from winrt.windows.media.playback import MediaPlaybackState, MediaPlayer
 
 
-# Handle async play
 # Need to have name of station in windows + a system tray
-# define functions for start, stop, tracking functions for getting states for loading and active.
-# Graceful exit functionality
 class Media_Player:
     STREAM_PLAYING = MediaPlaybackState.PLAYING.value
     STREAM_PAUSED = MediaPlaybackState.PAUSED.value
