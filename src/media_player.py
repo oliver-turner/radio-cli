@@ -1,5 +1,4 @@
 import asyncio
-import time
 
 from winrt.windows.foundation import Uri
 from winrt.windows.media.playback import MediaPlaybackState, MediaPlayer
@@ -42,24 +41,3 @@ class Media_Player:
 
     def is_paused(self) -> bool:
         return self.get_status() == self.STREAM_PAUSED
-
-
-radio = Media_Player()
-
-radio.play_stream(
-    "https://mediaserviceslive.akamaized.net/hls/live/2038316/classicfmnsw/index.m3u8"
-)
-time.sleep(5)
-
-radio.stop()
-
-time.sleep(2)
-
-radio.stop()
-
-time.sleep(2)
-
-radio.start()
-
-
-input("\nPress ENTER to close the player and exit script...\n")
