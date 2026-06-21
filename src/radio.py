@@ -29,3 +29,5 @@ def play_station(radio, user_list):
 
         else:
             print("Please choose a valid number")
+
+def now_playing(radio):
