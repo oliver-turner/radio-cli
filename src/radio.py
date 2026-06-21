@@ -11,7 +11,7 @@ def play_station(radio, user_list):
         choice = input("Type the index and press enter [or q for exit]: ").strip()
 
         if choice == "q":
-            print("Exiting...")
+            print("\nExiting...")
             break
 
         elif choice.isdigit():
