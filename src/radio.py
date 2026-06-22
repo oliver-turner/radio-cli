@@ -17,7 +17,6 @@ def play_station(radio, user_station_list):
                 selected_station = user_station_list[choice_int - 1]
                 url = selected_station.url_resolved
                 active_station_name = selected_station.name
-                print(f"\nYou chose {active_station_name}\n")
                 radio.play_stream(url)
                 return active_station_name
 
