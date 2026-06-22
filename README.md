@@ -15,7 +15,6 @@ Thank you for checking out my fun project
 ## Requirements
 
 - Windows 10 or 11
-- [Python 3.10 or newer](https://www.python.org/downloads/) — check by running `python --version` in a terminal
 - [Git](https://git-scm.com/)
 
 ---
@@ -30,7 +29,7 @@ cd radio-cli
 .\setup.ps1
 ```
 
-`setup.ps1` will create an isolated Python environment and install all dependencies automatically.
+`setup.ps1` will install uv, create a isolated Python environment and install all dependencies from the locked, hash-verified uv.lock file
 
 ---
 
