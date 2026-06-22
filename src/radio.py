@@ -21,7 +21,7 @@ def play_station(radio, user_station_list):
                 return active_station_name
 
             else:
-                print("That is not a station, please try again ")
+                print("\nThat is not a station, please try again ")
 
         else:
-            print("Please choose a valid number")
+            print("\nPlease choose a valid number")
