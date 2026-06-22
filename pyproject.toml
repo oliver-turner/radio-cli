@@ -22,3 +22,6 @@ radio = "main:main"
 [tool.setuptools]
 py-modules = ["main"]
 packages = ["src"]
+
+[tool.uv]
+required-version = ">=0.5.0"
