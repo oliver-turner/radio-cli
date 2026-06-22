@@ -4,6 +4,7 @@ from src.menu import show_stations
 def play_station(radio, user_station_list):
     show_stations(user_station_list)
     while True:
+        print("\n~")
         choice = input("Type the index and press enter [or q for exit]: ").strip()
 
         if choice == "q":
