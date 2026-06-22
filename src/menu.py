@@ -16,8 +16,10 @@ def show_stations(user_station_list):
 
 
 def show_welcome(active_station_name):
-    print("\nMenu")
+    print("\n~")
+    print("Menu")
     print(f"Now playing: {active_station_name}")
     print("1. Play")
     print("2. View Saved Stations")
-    print("Enter q to exit")
+    print("~")
+    print("Enter q to exit or enter kobe")
