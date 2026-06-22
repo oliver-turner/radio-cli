@@ -8,16 +8,17 @@ from src.stations_json_parser import parse_json
 
 def main():
     radio = Media_Player()
-    user_list = parse_json()
+    user_station_list = parse_json()
+    active_station_name = "No station is playing"
     print("\nWelcome to Radio CLI")
     while True:
-        show_welcome()
+        show_welcome(active_station_name)
         choice = input("\nEnter your choice and press enter :) ").strip()
 
         if choice == "1":
-            play_station(radio, user_list)
+            active_station_name = play_station(radio, user_station_list)
         elif choice == "2":
-            show_stations(user_list)
+            show_stations(user_station_list)
         elif choice == "q":
             print("\nGoodbye :)\n")
             sys.exit()
