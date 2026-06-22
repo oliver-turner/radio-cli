@@ -1,6 +1,7 @@
+import random
 import sys
 
-from src.kobe import print_random_kobe
+from src.constants import ascii_kobes
 from src.media_player import Media_Player
 from src.menu import show_stations, show_welcome
 from src.radio import play_station
@@ -21,12 +22,17 @@ def main():
         elif choice == "2":
             show_stations(user_station_list)
         elif choice == "kobe":
-            print_random_kobe()
+            print_kobe()
         elif choice == "q":
             print("\nGoodbye :)\n")
             sys.exit()
         else:
             print("\nNot an option, please type either 1, 2, q, or kobe")
+
+
+def print_kobe():
+    random_art = random.choice(ascii_kobes)
+    print(random_art)
 
 
 if __name__ == "__main__":
