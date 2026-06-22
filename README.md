@@ -79,6 +79,7 @@ Enter q to exit or enter kobe
 
 ## Future Features
 Currently it is a hardcoded list of stations I like. While I develop this project, I will try and add more features such as:
+- An about section in the program [i will do this next :)]
 - Adding and removing stations
 - Updating the stations info
 - Having the info shown in the windows media tray (windows key + a)
