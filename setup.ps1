@@ -6,6 +6,10 @@ Write-Host ""
 Write-Host "Creating virtual environment..." -ForegroundColor Yellow
 python -m venv .venv
 
+# Upgrading pip
+Write-Host "Upgrading internal installation tools..."
+.\.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+
 # Install dependencies
 Write-Host ""
 Write-Host "Installing dependencies..." -ForegroundColor Yellow
