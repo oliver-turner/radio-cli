@@ -1,10 +1,6 @@
 from src.menu import show_stations
 
 
-# List the stations, use a for loop through the my_stations, list by int.
-# Ask for the input, choice = the input
-# Use the choice to filter by stationuuid and use that to find the URL
-# Use mpv play URL
 def play_station(radio, user_station_list):
     show_stations(user_station_list)
     while True:
