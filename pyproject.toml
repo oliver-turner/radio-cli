@@ -4,16 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "radio-cli"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple terminal radio player for Windows"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pyradios>=2.0",
     "pydantic>=2.0",
-    "winrt-runtime",
-    "winrt-Windows.Foundation",
-    "winrt-Windows.Media.Playback",
+    "winrt-runtime; sys_platform == 'win32'",
+    "winrt-Windows.Foundation; sys_platform == 'win32'",
+    "winrt-Windows.Media.Playback; sys_platform == 'win32'",
 ]
 
 [project.scripts]
