@@ -1,18 +1,20 @@
-from winrt.windows.foundation import Uri
-from winrt.windows.media.playback import MediaPlaybackState, MediaPlayer
+import sys
 
 
 # Need to have name of station in windows + a system tray
-class Media_Player:
-    STREAM_PLAYING = MediaPlaybackState.PLAYING.value
-    STREAM_PAUSED = MediaPlaybackState.PAUSED.value
+class Win_Media_Player:
+    def __init__(self) -> None:
+        from winrt.windows.foundation import Uri
+        from winrt.windows.media.playback import MediaPlaybackState, MediaPlayer
 
-    def __init__(self):
+        self.Uri = Uri
+        self.STREAM_PLAYING = MediaPlaybackState.PLAYING.value
+        self.STREAM_PAUSED = MediaPlaybackState.PAUSED.value
         self.radio = MediaPlayer()
 
     def play_stream(self, url_to_play: str):
         clean_url = str(url_to_play).strip()
-        uri = Uri(clean_url)
+        uri = self.Uri(clean_url)
         self.radio.set_uri_source(uri)
         self.radio.play()
 
@@ -36,3 +38,20 @@ class Media_Player:
 
     def is_paused(self) -> bool:
         return self.get_status() == self.STREAM_PAUSED
+
+
+class Linux_Media_Player:
+    def __init__(self) -> None:
+        pass
+
+
+if sys.platform.startswith("win32"):
+    Media_Player = Win_Media_Player
+elif sys.platform.startswith("linux"):
+    Media_Player = Linux_Media_Player
+else:
+    supported_os = ["Windows (win32)", "Fedora (Linux)"]
+    raise NotImplementedError(
+        f"Operating system '{sys.platform}' is not supported. "
+        f"This program supports: {', '.join(supported_os)}"
+    )
