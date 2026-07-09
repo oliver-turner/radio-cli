@@ -1,4 +1,7 @@
+import subprocess
 import sys
+import time
+from typing import Optional
 
 
 # Need to have name of station in windows + a system tray
@@ -42,7 +45,30 @@ class Win_Media_Player:
 
 class Linux_Media_Player:
     def __init__(self) -> None:
-        pass
+        self.process: Optional[subprocess.Popen] = None
+
+    def play_stream(self, url_to_play):
+        print("\033[H\033[2J", end="", flush=True)
+        print("\033[KChecking if there is active station ...", end="\r", flush=True)
+        time.sleep(0.6)
+        self.stop()
+        print("\033[KLoading ... ", end="\r", flush=True)
+        clean_url = str(url_to_play).strip()
+        self.process = subprocess.Popen(
+            ["mpv", "--no-video", clean_url],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        time.sleep(5)
+        print("\033[K", end="\r", flush=True)
+
+    def stop(self):
+        if self.process is not None:
+            self.process.terminate()
+            self.process.wait()  # Clean up the process resource
+            self.process = None
+        else:
+            pass
 
 
 if sys.platform.startswith("win32"):
