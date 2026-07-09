@@ -1,10 +1,13 @@
+import time
+
 from src.menu import show_stations
 
 
 def play_station(radio, user_station_list):
-    show_stations(user_station_list)
     while True:
-        print("\n~")
+        print("\033[H\033[2J", end="", flush=True)
+        show_stations(user_station_list)
+        print("~")
         choice = input("Type the index and press enter [or q for exit]: ").strip()
 
         if choice == "q":
@@ -22,7 +25,9 @@ def play_station(radio, user_station_list):
                 return active_station_name
 
             else:
-                print("\nThat is not a station, please try again ")
+                print(f"{choice} is not a valid station, please try again ")
+                time.sleep(1.5)
 
         else:
-            print("\nPlease choose a valid number")
+            print("Please choose a valid number")
+            time.sleep(1.5)
