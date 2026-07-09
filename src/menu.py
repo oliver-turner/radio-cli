@@ -2,24 +2,22 @@ from src.constants import VISUAL_SEPARATOR
 
 
 def show_stations(user_station_list):
-    print()
-    print(VISUAL_SEPARATOR)
-    print()
+    print("\033[H\033[2J", end="")
     print("My Saved Stations:\n")
     for index, station in enumerate(user_station_list, start=1):
         print(
             f"{index}: {station.name}\nCountry: {station.country}\n"
             f"Quality: {station.codec} ({station.bitrate}Kpbs)\n",
         )
-    print(VISUAL_SEPARATOR)
     return
 
 
 def show_welcome(active_station_name):
-    print("\n~")
+    print("Welcome to Radio-CLI")
+    print("~")
     print("Menu")
     print(f"Now playing: {active_station_name}")
-    print("1. Play")
-    print("2. View Saved Stations")
+    print("- Play a Station [p]")
+    print("- Exit program [q]")
+    print("- Suprise [kobe]")
     print("~")
-    print("Enter q to exit or enter kobe")
