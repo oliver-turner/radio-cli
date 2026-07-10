@@ -1,6 +1,5 @@
 import subprocess
 import sys
-import time
 from typing import Optional
 
 
@@ -24,6 +23,7 @@ class Win_Media_Player:
     def stop(self):
         if self.is_playing():
             self.radio.pause()
+            self.radio.close()
         else:
             print("\nNothing is playing at the moment")
 
@@ -42,25 +42,18 @@ class Win_Media_Player:
     def is_paused(self) -> bool:
         return self.get_status() == self.STREAM_PAUSED
 
-
 class Linux_Media_Player:
     def __init__(self) -> None:
         self.process: Optional[subprocess.Popen] = None
 
     def play_stream(self, url_to_play):
-        print("\033[H\033[2J", end="", flush=True)
-        print("\033[KChecking if there is active station ...", end="\r", flush=True)
-        time.sleep(0.6)
         self.stop()
-        print("\033[KLoading ... ", end="\r", flush=True)
         clean_url = str(url_to_play).strip()
         self.process = subprocess.Popen(
             ["mpv", "--no-video", clean_url],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        time.sleep(5)
-        print("\033[K", end="\r", flush=True)
 
     def stop(self):
         if self.process is not None:
