@@ -25,13 +25,13 @@ class Win_Media_Player:
             self.radio.pause()
             self.radio.close()
         else:
-            print("\nNothing is playing at the moment")
+           pass
 
     def start(self):
         if self.is_paused():
             self.radio.play()
         else:
-            print("\nUnable to play right now :(")
+           pass
 
     def get_status(self):
         return self.radio.playback_session.playback_state
