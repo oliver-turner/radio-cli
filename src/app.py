@@ -1,13 +1,34 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Header
-from textual.containers import Vertical
+from textual.containers import Vertical, Horizontal
 from textual.binding import Binding
 
+
+from src.status import Status
 from src.station_list import StationList
 from src.media_player import Media_Player
 from src.stations_json_parser import parse_json
 
-class RadioCliApp(App):
+class RadioCli(App):
+    CSS = """
+    Horizontal {
+        height: 1fr;
+    }
+
+    Status, StationList {
+        width: 100%;
+        height: 50%;
+        padding: 1 2;
+        overflow-x: auto;
+    }
+
+    StationList Label {
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        width: 100%;
+    }
+    """
+
     def __init__(self) -> None:
         super().__init__()
         self.radio = Media_Player()
@@ -20,9 +41,8 @@ class RadioCliApp(App):
     def compose(self) -> ComposeResult:
         yield Header()
         with Vertical():
-
-            # Add Status bar next
-            yield StationList(self.user_station_list)
+           yield Status()
+           yield StationList(self.user_station_list)
         yield Footer()
 
     def play_station(self, station) -> None:
