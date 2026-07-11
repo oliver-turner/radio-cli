@@ -1,7 +1,8 @@
 import random
-from src.app import RadioCliApp
+from src.app import RadioCli
 from src.constants import ascii_kobes
 
+# Need to move to it's own textual component file
 def print_kobe():
     while True:
         random_art = random.choice(ascii_kobes)
@@ -14,4 +15,4 @@ def print_kobe():
 
 
 if __name__ == "__main__":
-    RadioCliApp().run()
+    RadioCli().run()
